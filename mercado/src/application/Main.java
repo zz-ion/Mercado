@@ -1,10 +1,10 @@
 package application;
 
 import connectionFactory.ConnectionDatabase;
-
-	
+import dao.ClienteDAO;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.Cliente;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import java.sql.Connection;
@@ -26,8 +26,17 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		
-		Connection con = ConnectionDatabase.getConnection();
-		ConnectionDatabase.closeConnection(con);
+		Cliente cliente = new Cliente ();
+		ClienteDAO clientedao = new ClienteDAO();
+		
+		cliente.setNomeCliente("Pedro");
+		cliente.setCpfCliente("08157290147");
+		cliente.setDataNasc("2001-03-11");
+		cliente.setTelefone("929392912");
+		cliente.setEndereco("Rua 1, numero 66");
+		cliente.setEmail("pedro@gmail");
+		
+		clientedao.create(cliente);
 		
 		launch(args);
 		
