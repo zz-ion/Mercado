@@ -3,6 +3,7 @@ package connectionFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ConnectionDatabase {
@@ -55,6 +56,25 @@ public class ConnectionDatabase {
 
 			if(stmt != null) {
 				stmt.close();
+			}
+
+		} catch (Exception e) {
+
+			throw new RuntimeException("Erro ao fechar conexão.", e);
+
+		}
+
+	}
+	
+	
+	public static void closeConnection(Connection con, PreparedStatement stmt, ResultSet rs) {
+
+		closeConnection(con);
+
+		try {
+
+			if(rs != null) {
+				rs.close();
 			}
 
 		} catch (Exception e) {

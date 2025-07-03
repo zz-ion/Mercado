@@ -8,6 +8,7 @@ import model.Cliente;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 
 public class Main extends Application {
@@ -29,14 +30,43 @@ public class Main extends Application {
 		Cliente cliente = new Cliente ();
 		ClienteDAO clientedao = new ClienteDAO();
 		
-		cliente.setNomeCliente("Pedro");
+		//create 
+		
+	/*	cliente.setNomeCliente("Pedro");
 		cliente.setCpfCliente("08157290147");
 		cliente.setDataNasc("2001-03-11");
 		cliente.setTelefone("929392912");
 		cliente.setEndereco("Rua 1, numero 66");
 		cliente.setEmail("pedro@gmail");
+		clientedao.create(cliente); */
 		
-		clientedao.create(cliente);
+		
+		
+		// read ou select
+		
+		ArrayList<Cliente> clientes = new ArrayList<>();
+		
+		clientes = clientedao.read();
+		
+		for(int i = 0; i < clientes.size(); i++) {
+			cliente = clientes.get(i);
+			System.out.println("||");
+			System.out.print(cliente.getIdCliente());
+			System.out.print("|");
+			System.out.print(cliente.getNomeCliente());
+			System.out.print("|");
+			System.out.print(cliente.getCpfCliente());
+			System.out.print("|");
+			System.out.print( cliente.getDataNasc());
+			System.out.print("|");
+			System.out.print(cliente.getTelefone());
+			System.out.print("|");
+			System.out.print( cliente.getEndereco());
+			System.out.println("|");
+			System.out.print(cliente.getEmail());
+		}
+		
+		clientedao.read();
 		
 		launch(args);
 		
