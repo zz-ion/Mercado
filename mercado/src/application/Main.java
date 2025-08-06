@@ -3,26 +3,51 @@ package application;
 import connectionFactory.ConnectionDatabase;
 import dao.ClienteDAO;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import model.Cliente;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 
 
+
 public class Main extends Application {
+	
+	// public static String tela = "/view/ViewLogin.fxml";
+	private static Stage stage;
+	private static Scene main;
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			
+			stage = primaryStage;
+			
+			Parent fxmlLogin = FXMLLoader.load(getClass().getResource("/view/ViewLogin.fxml"));
+			main = new Scene(fxmlLogin);
+			stage.setTitle("LOG IN");
+			stage.setScene(main);
+			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void TelaHome() throws IOException{
+		FXMLLoader fxmlHome = new FXMLLoader();
+		fxmlHome.setLocation(Main.class.getResource("/view/MainMenu.fxml"));
+		Parent TelaHome = fxmlHome.load();
+		main = new Scene(TelaHome);
+		stage.setTitle("TELA PRINCIPAL");
+		stage.setScene(main);
+		stage.setResizable(false);
+		stage.centerOnScreen();
+		stage.show();
 	}
 	
 	public static void main(String[] args) {
@@ -44,7 +69,7 @@ public class Main extends Application {
 		
 		// read ou select
 		
-		ArrayList<Cliente> clientes = new ArrayList<>();
+		/*/ArrayList<Cliente> clientes = new ArrayList<>();
 		
 		clientes = clientedao.read();
 		
@@ -66,7 +91,7 @@ public class Main extends Application {
 			System.out.print(cliente.getEmail());
 		}
 		
-		clientedao.read();
+		clientedao.read();*/
 		
 		launch(args);
 		

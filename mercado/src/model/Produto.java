@@ -2,7 +2,7 @@ package model;
 
 public class Produto {
 
-	private String idString;
+	private String idProduto;
 	private String nomeProd;
 	private String codBarra;
 	private String tipoUn;
@@ -15,10 +15,10 @@ public class Produto {
 	
 	// Construtor carregado
 	
-	public Produto(String idString, String nomeProd, String codBarra, String tipoUn, String dataFab, String dataVal,
+	public Produto(String idProduto, String nomeProd, String codBarra, String tipoUn, String dataFab, String dataVal,
 			String precoUn, String estoque) {
 		super();
-		this.idString = idString;
+		this.idProduto = idProduto;
 		this.nomeProd = nomeProd;
 		this.codBarra = codBarra;
 		this.tipoUn = tipoUn;
@@ -38,13 +38,13 @@ public class Produto {
 	// Getters & Setters
 	
 	
-	public String getIdString() {
-		return idString;
+	public String getidProduto() {
+		return idProduto;
 	}
 	
 	
-	public void setIdString(String idString) {
-		this.idString = idString;
+	public void setidProduto(String idProduto) {
+		this.idProduto = idProduto;
 	}
 	
 	
